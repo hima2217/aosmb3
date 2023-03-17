@@ -5,6 +5,9 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,7 +23,7 @@ import android.util.Log;
 public class MainActivity extends AppCompatActivity {
     LinearFragment linearFragment = new LinearFragment();
     ConstraintFragment constraintFragment = new ConstraintFragment();
-    RelativeFragment relativeFragment = new RelativeFragment();
+    Fragment relativeFragment = new RelativeFragment();
     EditText textView;
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -110,7 +113,22 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
         Log.d(TAG, "onResume");
     }
-    public void onClickk(View V){
-        Log.d(TAG, "hi!!!");
+    public void onClickk(View view){
+        FragmentTransaction fTrans = getSupportFragmentManager().beginTransaction();
+        linearFragment.clickButton();
+        Bundle bundle = new Bundle();
+        String textL = String.valueOf(((EditText) linearFragment
+                .getView()
+                .findViewById(R.id.editTextTextPersonName5))
+                .getText());
+        Log.i("ппп",textL);
+        bundle.putString("keyl", textL);
+
+        relativeFragment.setArguments(bundle);
+
+        fTrans.replace(R.id.fragment_container_view, relativeFragment).addToBackStack(null).commit();
+        ;
+
+
     }
 }

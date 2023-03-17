@@ -82,5 +82,8 @@ public class LinearFragment extends Fragment {
         Log.d("Жизненный цикл LinearFragment", "Вызов onDestroy");
         Toast.makeText(getActivity(), "Вызов onDestroy", Toast.LENGTH_SHORT).show();
     }
+    public void clickButton(){
 
+        Log.i("Тест","Работает!");
+    }
 }

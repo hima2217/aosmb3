@@ -18,6 +18,9 @@ import android.widget.Toast;
 import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
+    LinearFragment linearFragment = new LinearFragment();
+    ConstraintFragment constraintFragment = new ConstraintFragment();
+    RelativeFragment relativeFragment = new RelativeFragment();
     EditText textView;
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -33,30 +36,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        EditText textView= (EditText) findViewById(R.id.editTextTextPersonName2);
-
-        imageView.setImageResource(R.drawable.logo);
-        textView.setText(R.string.passwordd);
-
-
-
-        Button button = (Button) findViewById(R.id.button);
-
-        View.OnClickListener listener=new View.OnClickListener() {
-            @Override
-            public void onClick(View V){
-                Context context = getApplicationContext();
-                CharSequence text = "Вход!!!";
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-                Log.i(TAG, "Здравствуйте!!!");
-            }
-
-
-        };
+        setContentView(R.layout.fragment_container);
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragment_container_view, linearFragment)
+                .commit();
     }
     @Override
     protected void onStart() {

@@ -146,4 +146,11 @@ public class MainActivity extends AppCompatActivity {
         fTrans.replace(R.id.fragment_container_view, constraintFragment).addToBackStack(null).commit();
         ;
     }
+    public void onClickk2(View view){
+        FragmentTransaction fTrans = getSupportFragmentManager().beginTransaction();
+
+
+        fTrans.replace(R.id.fragment_container_view, linearFragment).addToBackStack(null).commit();
+        ;
+    }
 }

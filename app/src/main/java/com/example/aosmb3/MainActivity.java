@@ -131,4 +131,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void onClickk1(View view){
+        FragmentTransaction fTrans = getSupportFragmentManager().beginTransaction();
+        Bundle bundle = new Bundle();
+        String textL = String.valueOf(((TextView) relativeFragment
+                .getView()
+                .findViewById(R.id.textView4))
+                .getText());
+        Log.i("ппп111",textL);
+        bundle.putString("key2", textL);
+
+        constraintFragment.setArguments(bundle);
+
+        fTrans.replace(R.id.fragment_container_view, constraintFragment).addToBackStack(null).commit();
+        ;
+    }
 }

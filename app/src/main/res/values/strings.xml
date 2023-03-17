@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">aosmb3</string>
+    <string name="email">Почта</string>
+    <string name="passwordd">Пароль</string>
+</resources>
